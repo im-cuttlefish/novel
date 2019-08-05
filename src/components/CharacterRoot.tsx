@@ -1,12 +1,12 @@
 import React from "react";
-import { CharacterConfig } from "types";
-import { Character } from "./Character";
+import { CharacterView } from "./CharacterView";
+import { Character } from "effector/screen/types";
 
 export const CharacterRoot = ({ state }: Props) => (
   <>
     {state.map(({ config, usedImage }, index) => {
       return (
-        <Character x={800 / index} y={0} image={config.assets[usedImage]} />
+        <CharacterView x={800 / index} y={0} image={config.images[usedImage]} />
       );
     })}
     }
@@ -14,10 +14,5 @@ export const CharacterRoot = ({ state }: Props) => (
 );
 
 interface Props {
-  state: CharacterState[];
-}
-
-interface CharacterState {
-  config: CharacterConfig;
-  usedImage: string;
+  state: Character[];
 }

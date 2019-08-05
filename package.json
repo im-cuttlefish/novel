@@ -10,6 +10,7 @@
     "@types/react-dom": "16.8.5",
     "@types/react-transition-group": "^4.2.0",
     "effector": "^20.1.1",
+    "ky": "^0.11.2",
     "pixi.js": "^5.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

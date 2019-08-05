@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Stage } from "@inlet/react-pixi";
-import { Character } from "./Character";
+import { CharacterView } from "./CharacterView";
 import body from "../assets/taro/body.png";
 
 export const App = () => {
@@ -14,7 +14,7 @@ export const App = () => {
 
   return (
     <Stage width={800} height={700} options={{ backgroundColor: 0x777777 }}>
-      <Character x={x} y={0} image={body} />
+      <CharacterView x={x} y={0} image={body} />
     </Stage>
   );
 };

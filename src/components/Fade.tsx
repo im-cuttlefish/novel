@@ -6,7 +6,7 @@ import { Ticker } from "pixi.js";
 
 const { FPS } = new Ticker();
 
-export const Fade = ({ duration, children }: Props) => {
+export const Fade = ({ duration, children, done }: Props) => {
   const [transition, setTransition] = useState<TransitionStatus>();
   const [alpha, setAlpha] = useState(0);
   const endTransition = useRef(() => {});
@@ -22,6 +22,7 @@ export const Fade = ({ duration, children }: Props) => {
 
         if (next === 1) {
           endTransition.current();
+          done && done();
         }
 
         return;
@@ -33,6 +34,7 @@ export const Fade = ({ duration, children }: Props) => {
 
         if (next === 0) {
           endTransition.current();
+          done && done();
         }
 
         return;
@@ -63,4 +65,5 @@ export const Fade = ({ duration, children }: Props) => {
 interface Props {
   duration: number;
   children: ReactNode;
+  done?: () => void;
 }

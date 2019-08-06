@@ -1,4 +1,6 @@
+import { createEffect, createEvent } from "effector";
 import { Scenario } from "types";
-import { createEffect } from "effector";
+import { CommandResult } from "./types";
 
 export const loadScenario = createEffect<string, Scenario>();
+export const update = createEvent<CommandResult>();

@@ -1,6 +1,6 @@
 import { Character } from "./types";
 import { createStore } from "effector";
-import { currentCommand } from "effector/engine/store";
+import { currentCommand, scenario } from "effector/engine/store";
 
 const initialState: Character[] = [];
 

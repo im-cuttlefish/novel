@@ -1,6 +1,7 @@
-interface CommandBase {
-  type: "character" | "textarea" | "sound";
+interface CommandBase<T = null> {
+  type: "system" | "form" | "character" | "textarea" | "sound";
   command: string;
+  result: T;
 }
 
 interface AddCharacter extends CommandBase {
@@ -17,4 +18,10 @@ interface RemoveCharacter extends CommandBase {
   image: string;
 }
 
-export type Command = AddCharacter | RemoveCharacter;
+interface ShowChoices extends CommandBase<string> {
+  type: "form";
+  command: "show-choices";
+  choices: { [id: string]: string };
+}
+
+export type Command = AddCharacter | RemoveCharacter | ShowChoices;

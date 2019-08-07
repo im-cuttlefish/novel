@@ -1,18 +1,22 @@
 import React from "react";
+import { characterList } from "effector/screen/store";
+import { useStore } from "effector-react";
 import { CharacterView } from "./CharacterView";
-import { Character } from "effector/screen/types";
+import { Container } from "@inlet/react-pixi";
 
-export const CharacterRoot = ({ state }: Props) => (
-  <>
-    {state.map(({ config, usedImage }, index) => {
-      return (
-        <CharacterView x={800 / index} y={0} image={config.images[usedImage]} />
-      );
-    })}
-    }
-  </>
-);
+export const CharacterRoot = () => {
+  const list = useStore(characterList);
 
-interface Props {
-  state: Character[];
-}
+  return (
+    <Container>
+      {list.map(({ id, config, usedImage }, index) => (
+        <CharacterView
+          key={id}
+          x={800 / (index + 2)}
+          y={0}
+          image={config.images[usedImage]}
+        />
+      ))}
+    </Container>
+  );
+};

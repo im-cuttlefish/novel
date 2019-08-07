@@ -9,14 +9,17 @@
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.5",
     "@types/react-transition-group": "^4.2.0",
+    "@types/uuid": "^3.4.5",
     "effector": "^20.1.1",
+    "effector-react": "^20.2.1",
     "ky": "^0.11.2",
     "pixi.js": "^5.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
     "react-transition-group": "^4.2.1",
-    "typescript": "3.5.3"
+    "typescript": "3.5.3",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

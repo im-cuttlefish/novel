@@ -4,7 +4,9 @@ export interface Scenario {
   width: number;
   height: number;
   commandList: Command[];
-  character: CharacterConfig[];
+  configs: {
+    character: CharacterConfig[];
+  };
 }
 
 export interface CharacterConfig {

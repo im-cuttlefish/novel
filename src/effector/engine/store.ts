@@ -1,16 +1,12 @@
-import { loadScenario, update } from "./event";
-import { LoadingState } from "./types";
+import { update } from "./events";
 import { createStore, combine } from "effector";
-import { Scenario } from "types";
-
-export const scenario = createStore<Scenario | null>(null)
-  .on(loadScenario.done, (_, { result }) => result)
-  .on(loadScenario.fail, (_, { error }) => console.error(error));
+import { scenario } from "../loader/store";
 
 const commandList = scenario.map(store => (store && store.commandList) || []);
 
 const current = createStore(0)
-  .on(update, (index, { done }) => {
+  .reset(scenario.updates)
+  .on(update, index => {
     const list = commandList.getState();
 
     if (list.length - 1 > index + 1) {
@@ -20,16 +16,10 @@ const current = createStore(0)
 
     const next = index + 1;
     return next;
-  })
-  .reset(scenario.updates);
+  });
 
 export const currentCommand = combine(
   commandList,
   current,
   (commandList, current) => commandList[current]
 );
-
-export const loading = createStore<LoadingState>("loading")
-  .on(loadScenario.done, () => "succeed")
-  .on(loadScenario.fail, () => "failed")
-  .reset(loadScenario.pending);

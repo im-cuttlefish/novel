@@ -11,6 +11,8 @@ export interface Scenario {
 
 export interface CharacterConfig {
   name: string;
+  width: number;
+  height: number;
   images: {
     default: string;
     [s: string]: string;

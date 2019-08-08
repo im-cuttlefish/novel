@@ -12,9 +12,8 @@ interface AddCharacter extends CommandBase {
 
 interface RemoveCharacter extends CommandBase {
   type: "character";
-  command: "add-character";
+  command: "remove-character";
   name: string;
-  image: string;
 }
 
 interface RegisterID extends CommandBase {

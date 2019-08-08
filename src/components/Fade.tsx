@@ -31,6 +31,7 @@ export const Fade = ({ duration, children, done }: Props) => {
         let next = alpha - passed / duration;
         next = next > 0 ? next : 0;
         setAlpha(next);
+        console.log("exiting");
 
         if (next === 0) {
           endTransition.current();
@@ -45,6 +46,7 @@ export const Fade = ({ duration, children, done }: Props) => {
   return (
     <Transition
       in
+      exit
       appear
       timeout={{}}
       addEndListener={(_, done) => {

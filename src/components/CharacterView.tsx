@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Sprite, useTick } from "@inlet/react-pixi";
-import { Fade } from "./Fade";
 
 interface Props {
   x: number;
   y: number;
+  alpha: number;
   image: string;
-  done?: () => void;
 }
 
-export const CharacterView = ({ x, y, image, done }: Props) => {
+export const CharacterView = ({ x, y, alpha, image }: Props) => {
   const [currentX, setCurrentX] = useState(x);
 
   useTick(() => {
@@ -19,9 +18,5 @@ export const CharacterView = ({ x, y, image, done }: Props) => {
     }
   });
 
-  return (
-    <Fade duration={1000} done={done}>
-      <Sprite x={currentX} y={y} image={image} />
-    </Fade>
-  );
+  return <Sprite x={currentX} y={y} alpha={alpha} image={image} />;
 };

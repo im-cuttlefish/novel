@@ -10,7 +10,7 @@ const current = SystemDomain.store(0)
   .on(update, index => {
     const list = commandList.getState();
 
-    if (list.length - 1 > index + 1) {
+    if (index + 1 > list.length) {
       console.error("Engine stopped: There is no command anymore.");
       return;
     }
@@ -23,3 +23,7 @@ export const currentCommand = combine(
   current,
   (commandList, current) => commandList[current]
 );
+
+currentCommand.watch(state => {
+  console.log(state);
+});

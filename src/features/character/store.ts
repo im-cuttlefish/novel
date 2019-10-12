@@ -1,9 +1,8 @@
-import { v4 as generate } from "uuid";
-import { scenario } from "features/global/store";
 import { currentCommand } from "features/system/store";
 import { Character } from "./types";
 import { CharacterDomain } from "./domain";
 import { createCharacter } from "./utils/createCharacter";
+import { update } from "features/system/events";
 
 const initialState: Character[] = [];
 
@@ -18,6 +17,8 @@ export const characterList = CharacterDomain.store(initialState).on(
       case "add-character": {
         const { name, image } = payload;
         const added = createCharacter(name, image);
+        setTimeout(update, 1000);
+
         return [...state, added];
       }
 

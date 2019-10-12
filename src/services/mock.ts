@@ -15,6 +15,12 @@ const commandList: Command[] = [
   },
   {
     type: "character",
+    command: "add-character",
+    name: "hanako",
+    image: "default"
+  },
+  {
+    type: "character",
     command: "remove-character",
     name: "taro"
   }
@@ -23,6 +29,12 @@ const commandList: Command[] = [
 const character: CharacterConfig[] = [
   {
     name: "taro",
+    width: 313,
+    height: 510,
+    images: { default: body }
+  },
+  {
+    name: "hanako",
     width: 313,
     height: 510,
     images: { default: body }

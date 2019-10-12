@@ -1,17 +1,21 @@
 import React from "react";
 import { useStore } from "effector-react";
-import { Leaper, LeaperContainer, cubic } from "react-leaper";
+import { useTransition, animated } from "react-spring";
 import { scenario as scenarioStore } from "features/global/store";
-import { update } from "features/system/events";
 import { characterList } from "./store";
 import { CharacterView } from "./components/ChatacterView";
-
-const addMotion = cubic(1000, { alpha: [0, 1] });
-const removeMotion = cubic(1000, { alpha: [1, 0] });
 
 export const CharacterRoot = () => {
   const scenario = useStore(scenarioStore);
   const list = useStore(characterList);
+  const { length } = list;
+
+  const transitions = useTransition(list, item => item.id, {
+    initial: { position: "absolute" },
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 }
+  });
 
   if (scenario === null) {
     return <></>;
@@ -20,29 +24,24 @@ export const CharacterRoot = () => {
   const { width, height } = scenario.environment;
 
   return (
-    <LeaperContainer>
-      {list.map(({ id, config, usedImage }, index) => {
+    <div style={{ position: "relative" }}>
+      {transitions.map(({ item, key, props }, index) => {
+        const { config, usedImage } = item;
         const cWidth = config.width;
         const cHeight = config.height;
 
+        console.log(index);
+
         return (
-          <Leaper
-            key={id}
-            add={addMotion}
-            remove={removeMotion}
-            onAdded={() => update()}
-          >
-            {style => (
-              <CharacterView
-                x={width / (index + 2) - cWidth / 2}
-                y={height - cHeight}
-                alpha={+style.alpha}
-                image={config.images[usedImage]}
-              />
-            )}
-          </Leaper>
+          <animated.div key={key} style={props}>
+            <CharacterView
+              x={(width * (index + 1)) / (length + 1) - cWidth / 2}
+              y={height - cHeight}
+              image={config.images[usedImage]}
+            />
+          </animated.div>
         );
       })}
-    </LeaperContainer>
+    </div>
   );
 };

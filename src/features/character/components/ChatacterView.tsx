@@ -1,22 +1,29 @@
-import React, { useState } from "react";
-import { Sprite, useTick } from "@inlet/react-pixi";
+import React from "react";
+import { useTransition, animated, useSpring } from "react-spring";
 
 interface Props {
   x: number;
   y: number;
-  alpha: number;
   image: string;
 }
 
-export const CharacterView = ({ x, y, alpha, image }: Props) => {
-  const [currentX, setCurrentX] = useState(x);
-
-  useTick(() => {
-    if (currentX !== x) {
-      const direction = Math.sign(x - currentX);
-      setCurrentX(direction + currentX);
-    }
+export const CharacterView = ({ x, y, image }: Props) => {
+  const transition = useTransition(image, null, {
+    initial: { position: "absolute" },
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 }
   });
 
-  return <Sprite x={currentX} y={y} alpha={alpha} image={image} />;
+  const point = useSpring({ left: x, top: y });
+
+  console.log(x, y);
+
+  return (
+    <>
+      {transition.map(({ item, props, key }) => (
+        <animated.img key={key} src={item} style={{ ...props, ...point }} />
+      ))}
+    </>
+  );
 };

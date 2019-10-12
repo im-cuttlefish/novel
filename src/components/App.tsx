@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { Stage } from "@inlet/react-pixi";
 import { createEvent, forward } from "effector";
 import { loadScenario } from "features/global/events";
 import { CharacterRoot } from "features/character";
@@ -27,12 +26,8 @@ export const App = () => {
   const [width, height] = rect.current;
 
   return (
-    <Stage
-      width={width}
-      height={height}
-      options={{ backgroundColor: 0x777777 }}
-    >
+    <div style={{ backgroundColor: "gray", width, height }}>
       <CharacterRoot />
-    </Stage>
+    </div>
   );
 };

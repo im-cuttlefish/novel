@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { Stage } from "@inlet/react-pixi";
 import { createEvent, forward } from "effector";
-import { loadScenario } from "effector/loader/events";
-import { CharacterRoot } from "./CharacterRoot";
+import { loadScenario } from "features/global/events";
+import { CharacterRoot } from "features/character";
 import { useStore } from "effector-react";
-import { scenario as scenarioStore } from "effector/loader/store";
+import { scenario as scenarioStore } from "features/global/store";
 
 const mounted = createEvent();
 
@@ -20,7 +20,7 @@ export const App = () => {
   useEffect(() => mounted(), []);
 
   if (scenario !== null) {
-    const { width, height } = scenario;
+    const { width, height } = scenario.environment;
     rect.current = [width, height];
   }
 

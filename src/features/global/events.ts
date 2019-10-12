@@ -1,8 +1,7 @@
-import { createEffect } from "effector";
-import { Scenario } from "types";
 import { getScenario } from "services/getScenario";
+import { GlobalDomain } from "./domain";
 
-export const loadScenario = createEffect<string, Scenario>("load-scenario", {
+export const loadScenario = GlobalDomain.effect("load-scenario", {
   handler: getScenario
 });
 

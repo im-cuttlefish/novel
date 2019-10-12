@@ -1,12 +1,19 @@
-import { Command } from "commands";
+import { CharacterCommand } from "./characterCommand";
+import { SystemCommand } from "./systemCommand";
+
+export type Command = CharacterCommand | SystemCommand;
 
 export interface Scenario {
-  width: number;
-  height: number;
+  environment: Environment;
   commandList: Command[];
   configs: {
     character: CharacterConfig[];
   };
+}
+
+export interface Environment {
+  width: number;
+  height: number;
 }
 
 export interface CharacterConfig {

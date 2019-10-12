@@ -1,10 +1,10 @@
 import React from "react";
-import { characterList } from "effector/screen/store";
 import { useStore } from "effector-react";
-import { CharacterView } from "./CharacterView";
-import { scenario as scenarioStore } from "effector/loader/store";
-import { update } from "effector/engine/events";
 import { Leaper, LeaperContainer, cubic } from "react-leaper";
+import { scenario as scenarioStore } from "features/global/store";
+import { update } from "features/system/events";
+import { characterList } from "./store";
+import { CharacterView } from "./components/ChatacterView";
 
 const addMotion = cubic(1000, { alpha: [0, 1] });
 const removeMotion = cubic(1000, { alpha: [1, 0] });
@@ -17,7 +17,7 @@ export const CharacterRoot = () => {
     return <></>;
   }
 
-  const { width, height } = scenario;
+  const { width, height } = scenario.environment;
 
   return (
     <LeaperContainer>

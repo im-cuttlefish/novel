@@ -8,7 +8,6 @@ import { CharacterView } from "./components/ChatacterView";
 export const CharacterRoot = () => {
   const scenario = useStore(scenarioStore);
   const list = useStore(characterList);
-  const { length } = list;
 
   const transitions = useTransition(list, item => item.id, {
     initial: { position: "absolute" },
@@ -25,7 +24,7 @@ export const CharacterRoot = () => {
 
   return (
     <div style={{ position: "relative" }}>
-      {transitions.map(({ item, key, props }, index) => {
+      {transitions.map(({ item, key, props }, index, { length }) => {
         const { config, usedImage } = item;
         const cWidth = config.width;
         const cHeight = config.height;

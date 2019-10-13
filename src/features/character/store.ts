@@ -17,7 +17,7 @@ export const characterList = CharacterDomain.store(initialState).on(
       case "add-character": {
         const { name, image } = payload;
         const added = createCharacter(name, image);
-        setTimeout(update, 1000);
+        setTimeout(update, 4000);
 
         return [...state, added];
       }
@@ -42,6 +42,17 @@ export const characterList = CharacterDomain.store(initialState).on(
           console.error(`Character Error: character "${name}" is not added.`);
           return;
         }
+
+        setTimeout(update, 0);
+
+        return state.map(x => {
+          if (x.config.name !== name) {
+            return x;
+          }
+
+          x.usedImage = image;
+          return x;
+        });
       }
     }
   }

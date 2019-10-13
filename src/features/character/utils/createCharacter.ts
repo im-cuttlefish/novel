@@ -8,7 +8,7 @@ export const createCharacter = (name: string, image: string): Character => {
   const config = character.find(x => x.name === name);
 
   if (!config) {
-    throw `Character Error: character "${name}" is not defined.`;
+    throw new Error(`Character Error: character "${name}" is not defined.`);
   }
 
   const id = generate();

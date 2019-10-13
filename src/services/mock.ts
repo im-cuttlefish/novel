@@ -1,4 +1,5 @@
 import body from "assets/taro/body.png";
+import smile from "assets/taro/body.copy.png";
 import { Command, CharacterConfig, Scenario, Environment } from "types";
 
 const environment: Environment = {
@@ -21,6 +22,12 @@ const commandList: Command[] = [
   },
   {
     type: "character",
+    command: "change-image",
+    name: "hanako",
+    image: "smile"
+  },
+  {
+    type: "character",
     command: "remove-character",
     name: "taro"
   }
@@ -31,13 +38,13 @@ const character: CharacterConfig[] = [
     name: "taro",
     width: 313,
     height: 510,
-    images: { default: body }
+    images: { default: body, smile }
   },
   {
     name: "hanako",
     width: 313,
     height: 510,
-    images: { default: body }
+    images: { default: body, smile }
   }
 ];
 

@@ -9,15 +9,12 @@ interface Props {
 
 export const CharacterView = ({ x, y, image }: Props) => {
   const transition = useTransition(image, null, {
-    initial: { position: "absolute" },
-    from: { opacity: 0 },
+    from: { position: "absolute", opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 }
   });
 
   const point = useSpring({ left: x, top: y });
-
-  console.log(x, y);
 
   return (
     <>

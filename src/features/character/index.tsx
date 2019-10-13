@@ -22,14 +22,14 @@ export const CharacterRoot = () => {
 
   const { width, height } = scenario.environment;
 
+  console.log(list);
+
   return (
     <div style={{ position: "relative" }}>
       {transitions.map(({ item, key, props }, index, { length }) => {
         const { config, usedImage } = item;
         const cWidth = config.width;
         const cHeight = config.height;
-
-        console.log(index);
 
         return (
           <animated.div key={key} style={props}>

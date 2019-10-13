@@ -1,3 +1,3 @@
-import { SystemDomain } from "./domain";
+import { systemDomain } from "./domain";
 
-export const update = SystemDomain.event();
+export const update = systemDomain.event();

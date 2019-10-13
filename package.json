@@ -7,6 +7,7 @@
     "@types/node": "12.6.8",
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.5",
+    "@types/styled-components": "^4.1.19",
     "@types/uuid": "^3.4.5",
     "effector": "^20.1.1",
     "effector-react": "^20.2.1",
@@ -16,6 +17,7 @@
     "react-scripts": "3.0.1",
     "react-spring": "^8.0.27",
     "ress": "^1.2.2",
+    "styled-components": "^4.4.0",
     "typescript": "3.5.3",
     "uuid": "^3.3.2"
   },

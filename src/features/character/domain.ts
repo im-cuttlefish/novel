@@ -1,3 +1,3 @@
 import { createDomain } from "effector";
 
-export const CharacterDomain = createDomain();
+export const characterDomain = createDomain();

@@ -10,8 +10,7 @@ export const CharacterRoot = () => {
   const list = useStore(characterList);
 
   const transitions = useTransition(list, item => item.id, {
-    initial: { position: "absolute" },
-    from: { opacity: 0 },
+    from: { position: "absolute", opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 }
   });
@@ -21,8 +20,6 @@ export const CharacterRoot = () => {
   }
 
   const { width, height } = scenario.environment;
-
-  console.log(list);
 
   return (
     <div style={{ position: "relative" }}>

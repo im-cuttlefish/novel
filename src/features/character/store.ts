@@ -1,6 +1,6 @@
 import { currentCommand } from "features/system/store";
 import { Character } from "./types";
-import { CharacterDomain } from "./domain";
+import { characterDomain } from "./domain";
 import { createCharacter } from "./utils/createCharacter";
 import { update } from "features/system/events";
 
@@ -10,14 +10,14 @@ const characterEvent = currentCommand.updates.filterMap(payload =>
   payload.type === "character" ? payload : undefined
 );
 
-export const characterList = CharacterDomain.store(initialState).on(
-  characterEvent,
-  (state, payload) => {
+export const characterList = characterDomain
+  .store(initialState)
+  .on(characterEvent, (state, payload) => {
     switch (payload.command) {
       case "add-character": {
         const { name, image } = payload;
         const added = createCharacter(name, image);
-        setTimeout(update, 4000);
+        setTimeout(update, 1000);
 
         return [...state, added];
       }
@@ -31,6 +31,8 @@ export const characterList = CharacterDomain.store(initialState).on(
           return;
         }
 
+        setTimeout(update);
+
         return state.filter(x => x.config.name !== name);
       }
 
@@ -43,7 +45,7 @@ export const characterList = CharacterDomain.store(initialState).on(
           return;
         }
 
-        setTimeout(update, 0);
+        setTimeout(update);
 
         return state.map(x => {
           if (x.config.name !== name) {
@@ -55,5 +57,4 @@ export const characterList = CharacterDomain.store(initialState).on(
         });
       }
     }
-  }
-);
+  });

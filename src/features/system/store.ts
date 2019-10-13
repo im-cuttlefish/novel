@@ -1,11 +1,12 @@
 import { update } from "./events";
 import { combine } from "effector";
 import { scenario } from "../global/store";
-import { SystemDomain } from "./domain";
+import { systemDomain } from "./domain";
 
 const commandList = scenario.map(store => (store && store.commandList) || []);
 
-const current = SystemDomain.store(0)
+const current = systemDomain
+  .store(0)
   .reset(commandList.updates)
   .on(update, index => {
     const list = commandList.getState();
@@ -23,7 +24,3 @@ export const currentCommand = combine(
   current,
   (commandList, current) => commandList[current]
 );
-
-currentCommand.watch(state => {
-  console.log(state);
-});

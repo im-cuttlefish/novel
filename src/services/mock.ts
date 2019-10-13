@@ -1,6 +1,13 @@
 import body from "assets/taro/body.png";
 import smile from "assets/taro/body.copy.png";
-import { Command, CharacterConfig, Scenario, Environment } from "types";
+import school from "assets/school/school.jpg";
+import {
+  Command,
+  CharacterConfig,
+  Scenario,
+  Environment,
+  BackgroundConfig
+} from "types";
 
 const environment: Environment = {
   width: 1000,
@@ -13,6 +20,11 @@ const commandList: Command[] = [
     command: "add-character",
     name: "taro",
     image: "default"
+  },
+  {
+    type: "background",
+    command: "set-background",
+    name: "school"
   },
   {
     type: "character",
@@ -48,8 +60,15 @@ const character: CharacterConfig[] = [
   }
 ];
 
+const background: BackgroundConfig[] = [
+  {
+    name: "school",
+    image: school
+  }
+];
+
 export const mock: Scenario = {
   environment,
   commandList,
-  configs: { character }
+  configs: { character, background }
 };

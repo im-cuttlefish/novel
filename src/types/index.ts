@@ -1,13 +1,15 @@
 import { CharacterCommand } from "./characterCommand";
 import { SystemCommand } from "./systemCommand";
+import { BackgroundCommand } from "./backgroundCommand";
 
-export type Command = CharacterCommand | SystemCommand;
+export type Command = CharacterCommand | SystemCommand | BackgroundCommand;
 
 export interface Scenario {
   environment: Environment;
   commandList: Command[];
   configs: {
     character: CharacterConfig[];
+    background: BackgroundConfig[];
   };
 }
 
@@ -24,4 +26,9 @@ export interface CharacterConfig {
     default: string;
     [s: string]: string;
   };
+}
+
+export interface BackgroundConfig {
+  name: string;
+  image: string;
 }

@@ -1,7 +1,7 @@
 import { getScenario } from "services/getScenario";
-import { GlobalDomain } from "./domain";
+import { globalDomain } from "./domain";
 
-export const loadScenario = GlobalDomain.effect("load-scenario", {
+export const loadScenario = globalDomain.effect("load-scenario", {
   handler: getScenario
 });
 

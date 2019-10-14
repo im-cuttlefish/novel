@@ -1,5 +1,6 @@
 import React from "react";
 import { useTransition, animated, useSpring } from "react-spring";
+import styled from "styled-components";
 
 interface Props {
   x: number;
@@ -9,7 +10,7 @@ interface Props {
 
 export const CharacterView = ({ x, y, image }: Props) => {
   const transition = useTransition(image, null, {
-    from: { position: "absolute", opacity: 0 },
+    from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 }
   });
@@ -19,8 +20,12 @@ export const CharacterView = ({ x, y, image }: Props) => {
   return (
     <>
       {transition.map(({ item, props, key }) => (
-        <animated.img key={key} src={item} style={{ ...props, ...point }} />
+        <Image key={key} src={item} style={{ ...props, ...point }} />
       ))}
     </>
   );
 };
+
+const Image = animated(styled.img`
+  position: absolute;
+`);

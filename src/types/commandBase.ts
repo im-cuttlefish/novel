@@ -1,5 +1,5 @@
 export interface CommandBase {
-  type: "system" | "form" | "character" | "background" | "textarea" | "sound";
+  type: "system" | "form" | "character" | "background" | "message" | "sound";
   command: string;
   [key: string]: unknown;
 }

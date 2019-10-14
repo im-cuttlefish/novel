@@ -1,12 +1,14 @@
 import body from "assets/taro/body.png";
 import smile from "assets/taro/body.copy.png";
 import school from "assets/school/school.jpg";
+import blue from "assets/message/message.png";
 import {
   Command,
   CharacterConfig,
   Scenario,
   Environment,
-  BackgroundConfig
+  BackgroundConfig,
+  MessageConfig
 } from "types";
 
 const environment: Environment = {
@@ -67,8 +69,18 @@ const background: BackgroundConfig[] = [
   }
 ];
 
+const message: MessageConfig[] = [
+  {
+    name: "speech",
+    width: 800,
+    height: 220,
+    image: blue,
+    padding: [10, 10, 10, 10]
+  }
+];
+
 export const mock: Scenario = {
   environment,
   commandList,
-  configs: { character, background }
+  configs: { character, background, message }
 };
